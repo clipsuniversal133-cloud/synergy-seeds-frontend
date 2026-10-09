@@ -7,22 +7,22 @@ export function CatalogueDownloadSection() {
   const url = businessSettings.catalogueUrl;
 
   return (
-    <section className="py-16 lg:py-22">
+    <section className="py-14 lg:py-20">
       <div className="container-page">
         <div className="card overflow-hidden">
-          <div className="grid items-center gap-8 p-8 lg:grid-cols-[auto_1fr_auto] lg:p-12">
+          <div className="grid items-center gap-6 p-6 sm:p-8 lg:grid-cols-[auto_1fr_auto] lg:p-10">
             {/* Icon / illustration */}
-            <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl bg-forest-50 text-forest-500">
-              <FileText className="h-10 w-10" strokeWidth={1.5} />
+            <div className="flex h-18 w-18 shrink-0 items-center justify-center rounded-2xl bg-forest-50 text-forest-500">
+              <FileText className="h-9 w-9" strokeWidth={1.5} />
             </div>
 
             {/* Text */}
             <div>
               <span className="section-eyebrow">Product Catalogue</span>
-              <h2 className="mt-2 font-display text-fluid-2xl font-bold text-forest-800">
+              <h2 className="mt-2 font-display text-fluid-xl font-bold text-forest-800">
                 Download Our Seed Catalogue
               </h2>
-              <p className="mt-2 text-muted leading-relaxed">
+              <p className="mt-2 text-sm text-muted leading-relaxed">
                 A complete overview of our 21 hybrid vegetable seed varieties with
                 specifications, pack sizes, and crop information.
               </p>

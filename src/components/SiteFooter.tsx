@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin, MessageCircle, Download } from 'lucide-react';
+import { Phone, Mail, MapPin, MessageCircle } from 'lucide-react';
 import { Logo } from '@/components/Logo';
 import { navLinks, footerPolicyLinks, businessSettings } from '@/config/business';
 import { productCategories } from '@/data/categories';

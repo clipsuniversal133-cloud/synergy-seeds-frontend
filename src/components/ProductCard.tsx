@@ -1,22 +1,18 @@
 import { Link } from 'react-router-dom';
-import { Eye, MessageCircle, ShoppingCart, Lock } from 'lucide-react';
+import { Eye, MessageCircle, Clock } from 'lucide-react';
 import type { Product } from '@/types';
 import { ProductImage } from '@/components/ProductImage';
 import { PriceDisplay } from '@/components/PriceDisplay';
 import { categoryName } from '@/data/categories';
-import { useCart } from '@/context/CartContext';
 import { getAllPackSizes } from '@/data/products';
 
 interface ProductCardProps {
   product: Product;
   onEnquire: (product: Product) => void;
-  onAddToCart?: (product: Product) => void;
 }
 
-export function ProductCard({ product, onEnquire, onAddToCart }: ProductCardProps) {
-  const { addToCart } = useCart();
+export function ProductCard({ product, onEnquire }: ProductCardProps) {
   const packSizes = getAllPackSizes(product);
-  const firstPack = packSizes[0];
 
   return (
     <article className="card group flex flex-col overflow-hidden transition-all duration-200 hover:shadow-card hover:-translate-y-0.5">
@@ -27,12 +23,14 @@ export function ProductCard({ product, onEnquire, onAddToCart }: ProductCardProp
           category={product.category}
           className="transition-transform duration-300 group-hover:scale-105"
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-60" />
         <span className="absolute left-3 top-3 badge bg-white/90 text-forest-700 backdrop-blur-sm">
           {categoryName(product.category)}
         </span>
         {!product.purchasable && (
-          <span className="absolute right-3 top-3 badge bg-accent-50/90 text-accent-700 backdrop-blur-sm">
-            Enquiry only
+          <span className="absolute right-3 top-3 inline-flex items-center gap-1 rounded-full bg-accent-50/90 px-2.5 py-0.5 text-xs font-medium text-accent-700 backdrop-blur-sm">
+            <Clock className="h-3 w-3" />
+            Enquiry
           </span>
         )}
       </Link>
@@ -71,35 +69,12 @@ export function ProductCard({ product, onEnquire, onAddToCart }: ProductCardProp
 
           <button
             onClick={() => onEnquire(product)}
-            className="btn-ghost flex-1 text-sm"
+            className="btn-primary flex-1 text-sm"
             aria-label={`Enquire about ${product.name}`}
           >
             <MessageCircle className="h-4 w-4" />
             Enquire
           </button>
-
-          {product.purchasable && firstPack ? (
-            <button
-              onClick={() =>
-                onAddToCart
-                  ? onAddToCart(product)
-                  : addToCart(product, firstPack, 1)
-              }
-              className="btn-primary text-sm"
-              aria-label={`Add ${product.name} to cart`}
-            >
-              <ShoppingCart className="h-4 w-4" />
-            </button>
-          ) : (
-            <button
-              onClick={() => onEnquire(product)}
-              className="btn-ghost text-sm opacity-60"
-              aria-label={`Purchasing unavailable for ${product.name}`}
-              title="Price not yet confirmed — enquire instead"
-            >
-              <Lock className="h-4 w-4" />
-            </button>
-          )}
         </div>
       </div>
     </article>

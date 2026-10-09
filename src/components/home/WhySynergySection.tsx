@@ -6,7 +6,7 @@ const pillarIcons = [Dna, Sprout, Shield, TrendingUp];
 
 export function WhySynergySection() {
   return (
-    <section className="bg-botanical py-16 lg:py-22">
+    <section className="py-14 lg:py-20">
       <div className="container-page">
         <div className="mb-10 text-center">
           <span className="section-eyebrow">Our Core Pillars</span>
@@ -24,7 +24,7 @@ export function WhySynergySection() {
             return (
               <div
                 key={pillar.title}
-                className="card p-6 text-center transition-all duration-200 hover:shadow-card hover:-translate-y-1 animate-fade-in-up"
+                className="card p-6 transition-all duration-200 hover:shadow-card hover:-translate-y-1 animate-fade-in-up"
                 style={{ animationDelay: `${index * 80}ms` }}
               >
                 <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-forest-50 text-forest-500">
@@ -47,7 +47,7 @@ export function WhySynergySection() {
 
 export function DealerCTASection() {
   return (
-    <section className="py-16 lg:py-22">
+    <section className="py-14 lg:py-20">
       <div className="container-page">
         <div className="relative overflow-hidden rounded-2xl bg-forest-800 px-6 py-12 sm:px-12 lg:py-16">
           <div className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-leaf-400/10" />

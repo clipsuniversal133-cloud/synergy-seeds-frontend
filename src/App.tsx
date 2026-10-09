@@ -57,11 +57,6 @@ export default function App() {
                   enquiryProduct={enquiryProduct}
                   isEnquiryOpen={isEnquiryOpen}
                   onEnquiryClose={handleEnquiryClose}
-                  onAddToCartToast={(name) => {
-                    setEnquiryProduct(null);
-                    setIsEnquiryOpen(false);
-                    void name;
-                  }}
                 />
               }
             />

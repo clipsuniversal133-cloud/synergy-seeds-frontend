@@ -5,7 +5,7 @@ import { categoryImages } from '@/lib/images';
 
 export function CropCategorySection() {
   return (
-    <section className="py-16 lg:py-22">
+    <section className="py-14 lg:py-20">
       <div className="container-page">
         <div className="mb-10 text-center">
           <span className="section-eyebrow">Our Crop Range</span>
@@ -28,15 +28,15 @@ export function CropCategorySection() {
                 className="group relative flex flex-col overflow-hidden rounded-xl border border-forest-100 bg-white shadow-soft transition-all duration-200 hover:shadow-card hover:-translate-y-1 animate-fade-in-up"
                 style={{ animationDelay: `${index * 60}ms` }}
               >
-                <div className="relative h-36 overflow-hidden sm:h-40">
+                <div className="relative h-40 overflow-hidden sm:h-44">
                   <img
                     src={img?.url}
                     alt={img?.alt ?? cat.name}
                     className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-forest-900/60 to-transparent" />
-                  <h3 className="absolute bottom-2.5 left-3 font-display text-lg font-bold text-white">
+                  <div className="absolute inset-0 bg-gradient-to-t from-forest-900/70 via-forest-900/20 to-transparent" />
+                  <h3 className="absolute bottom-2.5 left-3 font-display text-lg font-bold text-white drop-shadow-sm">
                     {cat.name}
                   </h3>
                 </div>

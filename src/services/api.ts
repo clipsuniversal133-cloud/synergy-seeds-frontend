@@ -46,7 +46,7 @@ export interface EnquirySubmissionResult {
   message: string;
 }
 
-export async function submitEnquiry(data: EnquiryData): Promise<EnquirySubmissionResult> {
+export async function submitEnquiry(_data: EnquiryData): Promise<EnquirySubmissionResult> {
   const ref = `ENQ-${Date.now().toString(36).toUpperCase()}`;
   return delay({
     success: true,
@@ -56,7 +56,7 @@ export async function submitEnquiry(data: EnquiryData): Promise<EnquirySubmissio
   });
 }
 
-export async function submitDealerEnquiry(data: DealerEnquiryData): Promise<EnquirySubmissionResult> {
+export async function submitDealerEnquiry(_data: DealerEnquiryData): Promise<EnquirySubmissionResult> {
   const ref = `DLR-${Date.now().toString(36).toUpperCase()}`;
   return delay({
     success: true,
@@ -66,7 +66,7 @@ export async function submitDealerEnquiry(data: DealerEnquiryData): Promise<Enqu
   });
 }
 
-export async function submitContactForm(data: ContactFormData): Promise<EnquirySubmissionResult> {
+export async function submitContactForm(_data: ContactFormData): Promise<EnquirySubmissionResult> {
   const ref = `CTC-${Date.now().toString(36).toUpperCase()}`;
   return delay({
     success: true,
@@ -84,8 +84,8 @@ export interface OrderSubmissionResult {
 }
 
 export async function submitOrder(
-  items: CartItemData[],
-  checkout: CheckoutData
+  _items: CartItemData[],
+  _checkout: CheckoutData
 ): Promise<OrderSubmissionResult> {
   const orderId = `SS-${Date.now().toString(36).toUpperCase()}`;
   return delay({

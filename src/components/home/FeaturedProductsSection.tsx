@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { ProductCard } from '@/components/ProductCard';
 import { products, featuredProductSlugs } from '@/data/products';
-import { aboutImageUrl } from '@/lib/images';
+import { aboutImageUrl, aboutImageAlt } from '@/lib/images';
 import type { Product } from '@/types';
 
 export function FeaturedProductsSection({
@@ -15,7 +15,7 @@ export function FeaturedProductsSection({
     .filter((p): p is Product => !!p);
 
   return (
-    <section className="py-16 lg:py-22">
+    <section className="py-14 lg:py-20">
       <div className="container-page">
         <div className="mb-10 flex items-end justify-between gap-4">
           <div>
@@ -23,6 +23,9 @@ export function FeaturedProductsSection({
             <h2 className="mt-2 font-display text-fluid-3xl font-bold text-forest-800">
               Selected Hybrid Seeds
             </h2>
+            <p className="mt-2 text-muted leading-relaxed max-w-lg">
+              A curated selection from our range of 21 hybrid varieties across five crop categories.
+            </p>
           </div>
           <Link
             to="/products"
@@ -52,14 +55,14 @@ export function FeaturedProductsSection({
 
 export function AboutPreviewSection() {
   return (
-    <section className="bg-botanical py-16 lg:py-22">
+    <section className="bg-botanical py-14 lg:py-20">
       <div className="container-page">
         <div className="grid items-center gap-10 lg:grid-cols-2">
           <div className="relative">
             <div className="overflow-hidden rounded-2xl shadow-card">
               <img
                 src={aboutImageUrl}
-                alt="Lush green field in rural India with irrigation"
+                alt={aboutImageAlt}
                 className="h-full w-full object-cover"
                 loading="lazy"
               />

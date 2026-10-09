@@ -5,7 +5,7 @@ import { buildWhatsAppGeneralLink } from '@/services/api';
 
 export function ContactSection() {
   return (
-    <section className="bg-forest-800 py-16 lg:py-22">
+    <section className="bg-forest-800 py-14 lg:py-20">
       <div className="container-page">
         <div className="mb-10 text-center">
           <span className="section-eyebrow text-leaf-300">Get In Touch</span>

@@ -1,13 +1,6 @@
 import { useState } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
-import {
-  ArrowLeft,
-  ShoppingCart,
-  MessageCircle,
-  Phone,
-  Lock,
-  Info,
-} from 'lucide-react';
+import { ArrowLeft, ShoppingCart, MessageCircle, Phone, Lock, Info } from 'lucide-react';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { ProductImage } from '@/components/ProductImage';
 import { PriceDisplay } from '@/components/PriceDisplay';
@@ -15,6 +8,8 @@ import { PackSizeSelector } from '@/components/PackSizeSelector';
 import { QuantitySelector } from '@/components/QuantitySelector';
 import { ProductCard } from '@/components/ProductCard';
 import { ProductEnquiryModal } from '@/components/ProductEnquiryModal';
+import { ToastContainer } from '@/components/ToastContainer';
+import { useToasts } from '@/hooks/useToasts';
 import {
   getProductBySlug,
   getRelatedProducts,
@@ -30,7 +25,6 @@ interface ProductDetailPageProps {
   enquiryProduct: Product | null;
   isEnquiryOpen: boolean;
   onEnquiryClose: () => void;
-  onAddToCartToast: (productName: string) => void;
 }
 
 export function ProductDetailPage({
@@ -38,11 +32,11 @@ export function ProductDetailPage({
   enquiryProduct,
   isEnquiryOpen,
   onEnquiryClose,
-  onAddToCartToast,
 }: ProductDetailPageProps) {
   const { slug } = useParams<{ slug: string }>();
   const product = slug ? getProductBySlug(slug) : undefined;
   const { addToCart } = useCart();
+  const { toasts, showToast, dismiss } = useToasts();
 
   const packSizes = product ? getAllPackSizes(product) : [];
   const [selectedPack, setSelectedPack] = useState('');
@@ -61,7 +55,7 @@ export function ProductDetailPage({
       return;
     }
     addToCart(product, activePack, quantity);
-    onAddToCartToast(product.name);
+    showToast(`${product.name} added to cart`, 'success');
   };
 
   const specs = [
@@ -164,19 +158,11 @@ export function ProductDetailPage({
                 </button>
               )}
 
-              <button
-                onClick={() => onEnquire(product)}
-                className="btn-outline flex-1"
-              >
-                <MessageCircle className="h-5 w-5" />
-                Enquire Now
-              </button>
-
               <a
                 href={buildWhatsAppEnquiryLink(product.name)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-secondary"
+                className="btn-secondary flex-1"
                 aria-label={`Enquire about ${product.name} on WhatsApp`}
               >
                 <Phone className="h-5 w-5" />
@@ -269,6 +255,8 @@ export function ProductDetailPage({
           onClose={onEnquiryClose}
         />
       </div>
+
+      <ToastContainer toasts={toasts} onDismiss={dismiss} />
     </div>
   );
 }
